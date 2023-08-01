@@ -22,7 +22,7 @@ public class TicTacToe {
         }
         return column;
     }
-
+//
     public Boolean isRowHomogenous(Integer rowIndex) {
         return null;
     }
