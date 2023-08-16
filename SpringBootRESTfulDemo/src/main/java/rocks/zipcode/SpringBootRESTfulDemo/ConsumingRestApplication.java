@@ -43,7 +43,7 @@ public class ConsumingRestApplication {
             log.info(quote.toString());
             // Log the Quote object to provide information.
         };
-    }
+    }//
 }
 //
 // server.port=8081
