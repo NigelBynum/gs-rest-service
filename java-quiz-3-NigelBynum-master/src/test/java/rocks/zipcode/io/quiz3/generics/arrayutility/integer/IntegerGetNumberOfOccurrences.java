@@ -37,8 +37,8 @@ public class IntegerGetNumberOfOccurrences {
         // then
         Assert.assertEquals(expected, actual);
     }
-
-
+//
+//
     @Test
     public void test3() {
         // given
@@ -53,4 +53,4 @@ public class IntegerGetNumberOfOccurrences {
         // then
         Assert.assertEquals(expected, actual);
     }
-}
+}//
