@@ -1,5 +1,38 @@
 package rocks.zipcode.SpringBootRESTfulDemo;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
+
+@SpringBootApplication
+public class ConsumingRestApplication {
+
+    private static final Logger log = LoggerFactory.getLogger(ConsumingRestApplication.class);
+
+    public static void main(String[] args) {
+        SpringApplication.run(ConsumingRestApplication.class, args);
+    }
+
+    @Bean
+    public RestTemplate restTemplate(RestTemplateBuilder builder) {
+        return builder.build();
+    }
+
+    @Bean
+    public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
+        return args -> {
+            Quote quote = restTemplate.getForObject(
+                    "http://localhost:8080/api/random", Quote.class);
+            log.info(quote.toString());
+        };
+    }
+}
+
 
 // In this lab, you are connecting you website to the api of another website,
 // so it can pull quotes from other site and import them show them  randomly
@@ -7,7 +40,7 @@ package rocks.zipcode.SpringBootRESTfulDemo;
 // http://localhost:8080/api/random = link
 
 
-import org.slf4j.Logger;  // Import a tool for logging or recording messages in your program.
+/*import org.slf4j.Logger;  // Import a tool for logging or recording messages in your program.
 import org.slf4j.LoggerFactory;  // Import a way to create loggers in your code.
 import org.springframework.boot.CommandLineRunner;  // Import a tool to run code when your program starts.
 import org.springframework.boot.SpringApplication;  // Import a tool to start up your Spring Boot application.
@@ -52,4 +85,4 @@ public class ConsumingRestApplication {
 
 // https://github.com/spring-guides/gs-consuming-rest.git - clone website into mac terminal
 // cd into quotes
-//run it using ./mvnw spring-boot:run
+//run it using ./mvnw spring-boot:run*/
